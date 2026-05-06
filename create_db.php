@@ -4,17 +4,7 @@ ini_set('display_errors', 1);
 
 echo "PHP is running<br>";
 
-$host = "127.0.0.1";
-$username = "root";
-$password = "2002";
-$database = "final_project";
-$port = 3306;
-
-$conn = mysqli_connect($host, $username, $password, $database, $port);
-
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+include 'connect.php';
 
 echo "Database connected<br>";
 

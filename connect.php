@@ -1,13 +1,14 @@
 <?php
-$host = "127.0.0.1";
-$username = "root";
-$password = "2002";
-$database = "final_project";
-$port = 3306;
 
-$conn = mysqli_connect($host, $username, $password, $database, $port);
+$host = "sql5.freesqldatabase.com";
+$username = "sql5825646";
+$password = "PvS5NikKig";
+$database = "sql5825646";
+
+$conn = mysqli_connect($host, $username, $password, $database, 3306);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
 ?>
