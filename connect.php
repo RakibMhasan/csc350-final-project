@@ -2,7 +2,7 @@
 
 $host = "sql5.freesqldatabase.com";
 $username = "sql5825646";
-$password = "PvS5NiKKig";
+$password = "OHkBpLPYgnWuIQBBMXmpZHmqTYREAefl";
 $database = "sql5825646";
 
 $conn = mysqli_connect($host, $username, $password, $database, 3306);
