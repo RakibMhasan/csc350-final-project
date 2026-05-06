@@ -1,11 +1,12 @@
 <?php
 
-$host = "sql5.freesqldatabase.com";
-$username = "sql5825646";
+$host = "turntable.proxy.rlwy.net";
+$username = "root";
 $password = "OHkBpLPYgnWuIQBBMXmpZHmqTYREAefl";
-$database = "sql5825646";
+$database = "railway";
+$port = 38844;
 
-$conn = mysqli_connect($host, $username, $password, $database, 3306);
+$conn = mysqli_connect($host, $username, $password, $database, $port);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
