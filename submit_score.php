@@ -26,16 +26,94 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     VALUES 
     ('$group_no', '$group_members', '$project_title', '$c1', '$c2', '$c3', '$c4', '$total', '$judge_name', '$comments')";
 
-    if (mysqli_query($conn, $sql)) {
-
-        echo "<h2>Score submitted successfully!</h2>";
-        echo "<p>Total Score: $total</p>";
-        echo "<a href='admin_results.php'>View Admin Results</a>";
-
-    } else {
-
-        echo "Database Error: " . mysqli_error($conn);
-
-    }
+    $success = mysqli_query($conn, $sql);
 }
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Score Submitted</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .message-box {
+            background: white;
+            width: 430px;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        h2 {
+            color: #1f4e79;
+            margin-bottom: 15px;
+        }
+
+        .total {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #222;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 8px;
+            padding: 10px 18px;
+            background: #1f4e79;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background: #163a5c;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="message-box">
+
+        <?php if (isset($success) && $success) { ?>
+
+            <h2>Score Submitted Successfully</h2>
+
+            <p>The score for this project has been saved.</p>
+
+            <div class="total">
+                Total Score: <?php echo $total; ?>
+            </div>
+
+            <a class="btn" href="judge_form.php">Submit Another Score</a>
+            <a class="btn" href="admin_results.php">View Admin Results</a>
+
+        <?php } else { ?>
+
+            <h2 class="error">Submission Failed</h2>
+            <p><?php echo mysqli_error($conn); ?></p>
+            <a class="btn" href="judge_form.php">Go Back</a>
+
+        <?php } ?>
+
+    </div>
+
+</body>
+</html>
