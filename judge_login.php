@@ -6,15 +6,19 @@ session_start();
 
 $error = "";
 
+$judges = [
+    "judge1" => "4821",
+    "judge2" => "7314",
+    "judge3" => "2648",
+    "judge4" => "9057"
+];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $user = $_POST["username"];
     $pass = $_POST["password"];
 
-    if (
-        ($user == "judge1" || $user == "judge2" || $user == "judge3" || $user == "judge4")
-        && $pass == "2002"
-    ) {
+    if (isset($judges[$user]) && $judges[$user] == $pass) {
 
         $_SESSION["judge_id"] = $user;
         $_SESSION["judge_name"] = $user;
